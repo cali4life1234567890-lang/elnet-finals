@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary-charcoal: #0F1113;
+            --accent-gold: #D4AF37;
+            --surface-light: #F8F9FA;
+            --on-surface-variant: #45474a;
+            --body-text: #141d23;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--body-text);
+            background-color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-headline-xl { font-size: 64px; font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; }
+        .font-headline-lg { font-size: 32px; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
+        .font-headline-md { font-size: 24px; font-weight: 600; line-height: 1.3; }
+        .font-label-caps { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+        .font-body-lg { font-size: 18px; line-height: 1.6; }
+
+        .navbar {
+            padding: 1.5rem 0;
+            background-color: var(--surface-light) !important;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .navbar-brand { font-weight: 800; font-size: 1.5rem; color: var(--primary-charcoal) !important; }
+        .nav-link {
+            color: var(--on-surface-variant) !important;
+            font-weight: 500;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--accent-gold) !important; }
+        .nav-link.active { border-bottom: 2px solid var(--accent-gold); }
+
+        .btn-signin {
+            background-color: var(--primary-charcoal);
+            color: #ffffff;
+            border-radius: 0;
+            padding: 0.5rem 1.5rem;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: transform 0.2s;
+        }
+        .btn-signin:active { transform: scale(0.95); }
+
+        .hero-section {
+            height: 870px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(15, 17, 19, 0.6) 0%, transparent 100%);
+            z-index: -1;
+        }
+
+        .search-widget {
+            background: white;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+            border: 1px solid #dee2e6;
+            margin-top: -70px;
+            position: relative;
+            z-index: 10;
+        }
+        .search-input-group {
+            border-bottom: 1px solid #adb5bd;
+            padding: 0.5rem 0;
+        }
+        .search-input-group input {
+            border: none;
+            width: 100%;
+            padding-left: 0.5rem;
+        }
+        .search-input-group input:focus { outline: none; }
+        .btn-search {
+            background-color: #e9c349;
+            color: #241a00;
+            width: 100%;
+            height: 56px;
+            border: none;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: background 0.3s;
+        }
+        .btn-search:hover { background-color: #d4af37; }
+
+        .value-prop { margin-top: 160px; padding-bottom: 120px; }
+        .icon-large { font-size: 40px; color: #e9c349; margin-bottom: 1.5rem; }
+
+        .fleet-section { background-color: #ecf5fe; padding: 120px 0; }
+        .fleet-card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 0;
+            transition: border-color 0.3s;
+            height: 100%;
+        }
+        .fleet-card:hover { border-color: #e9c349; }
+        .fleet-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .fleet-card:hover img { transform: scale(1.05); }
+        .fleet-img-container { overflow: hidden; }
+        .btn-details {
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid var(--primary-charcoal);
+            background: transparent;
+            padding: 1rem 0;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+        }
+        .btn-details:hover { background: var(--primary-charcoal); color: white; }
+
+        .newsletter-section { padding: 120px 0; }
+        .newsletter-image { width: 100%; height: 500px; object-fit: cover; border-radius: 2px; }
+        .newsletter-accent {
+            position: absolute;
+            top: -50px; left: -50px;
+            width: 250px; height: 250px;
+            background: #e0e9f2;
+            border-radius: 50%;
+            z-index: -1;
+        }
+        .email-input {
+            border: none;
+            border-bottom: 2px solid var(--primary-charcoal);
+            background: transparent;
+            font-size: 24px;
+            font-weight: 600;
+            padding: 1rem 0;
+            width: 100%;
+        }
+        .email-input:focus { outline: none; border-bottom-color: var(--accent-gold); }
+        .btn-join {
+            background: var(--primary-charcoal);
+            color: white;
+            border-radius: 0;
+            padding: 1.25rem 3rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-top: 2rem;
+            border: none;
+        }
+
+        footer {
+            background-color: var(--surface-light);
+            border-top: 1px solid #dee2e6;
+            padding: 80px 0;
+        }
+        .footer-logo { font-weight: 900; letter-spacing: -0.05em; font-size: 1.25rem; }
+        .footer-link {
+            color: #adb5bd;
+            text-decoration: none;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+        .footer-link:hover { color: var(--primary-charcoal); }
+        .copyright { color: #adb5bd; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; }
+
+        @media (max-width: 991px) {
+            .hero-section { height: 700px; }
+            .font-headline-xl { font-size: 48px; }
+            .search-widget { margin-top: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">LuxBus</a>
+            <button class="navbar-toggler border-0" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#">Fleet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Bookings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="d-none d-lg-block">
+                <button class="btn btn-signin">Sign In</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="hero-section">
+            <img alt="Luxury Coach" class="hero-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKx_yQCiEGdLCKZtolIg85dqXqSdi-VJIV5W2C9Zu2DIF_u8IMtEVpqqwvuzgJaKKIm9xoAzgDIZh0utJnhMQpYE3eOdpRMDLZ0idAVWl1eLcayDdWB2EuL2kNL8lZOT4DmXNZzzfNDhzFjebqL8Nv1aMjzOdXHCf7jE47Wo53LRNA3vy3gCN2Iv5SJh5sttn7wh2v--fCcDrExP1XEq3p_1TA6VCzgzxI-MAzlGdHvbeNdsQzespx2qYJcvA_1TrPSUF6nNZMUg" />
+            <div class="hero-overlay"></div>
+            <div class="container position-relative">
+                <div class="col-lg-7">
+                    <span class="font-label-caps d-block mb-3" style="color: #e9c349;">Redefining Collective Travel</span>
+                    <h1 class="text-white font-headline-xl mb-4">Travel in Distinguished Comfort.</h1>
+                    <p class="text-white-50 font-body-lg mb-0" style="max-width: 500px;">Experience the pinnacle of luxury transportation for corporate events, private galas, and exclusive tours.</p>
+                </div>
+            </div>
+        </section>
+        <div class="container">
+            <div class="search-widget">
+                <div class="row g-4 align-items-end">
+                    <div class="col-lg">
+                        <label class="font-label-caps text-muted mb-2">Pick-up</label>
+                        <div class="search-input-group d-flex align-items-center">
+                            <span class="material-symbols-outlined text-muted fs-6">location_on</span>
+                            <input placeholder="Enter Location" type="text" />
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <label class="font-label-caps text-muted mb-2">Drop-off</label>
+                        <div class="search-input-group d-flex align-items-center">
+                            <span class="material-symbols-outlined text-muted fs-6">trip_origin</span>
+                            <input placeholder="Enter Destination" type="text" />
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <label class="font-label-caps text-muted mb-2">Date</label>
+                        <div class="search-input-group d-flex align-items-center">
+                            <span class="material-symbols-outlined text-muted fs-6">calendar_today</span>
+                            <input type="date" />
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <label class="font-label-caps text-muted mb-2">Capacity</label>
+                        <div class="search-input-group d-flex align-items-center">
+                            <span class="material-symbols-outlined text-muted fs-6">group</span>
+                            <input placeholder="Guests" type="number" />
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <button class="btn btn-search font-label-caps">Search Fleet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="value-prop container">
+            <div class="row g-5">
+                <div class="col-md-4">
+                    <span class="material-symbols-outlined icon-large">directions_bus</span>
+                    <h3 class="font-headline-md mb-3">Modern Fleet</h3>
+                    <p class="text-muted">Pristine vehicles equipped with the latest amenities, ensuring your journey is as productive as it is comfortable.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="material-symbols-outlined icon-large">person_celebrate</span>
+                    <h3 class="font-headline-md mb-3">Professional Drivers</h3>
+                    <p class="text-muted">Vetted, uniformed chauffeurs committed to punctuality, safety, and discreet hospitality.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="material-symbols-outlined icon-large">verified</span>
+                    <h3 class="font-headline-md mb-3">Seamless Booking</h3>
+                    <p class="text-muted">A sophisticated digital platform designed for rapid scheduling and transparent management of your logistics.</p>
+                </div>
+            </div>
+        </section>
+        <section class="fleet-section">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-end mb-5">
+                    <div>
+                        <span class="font-label-caps text-muted d-block mb-1">Curated Selection</span>
+                        <h2 class="font-headline-lg">Our Premier Inventory</h2>
+                    </div>
+                    <div class="d-none d-md-flex gap-2">
+                        <button class="btn btn-outline-secondary rounded-0 p-2"><span class="material-symbols-outlined">chevron_left</span></button>
+                        <button class="btn btn-outline-secondary rounded-0 p-2"><span class="material-symbols-outlined">chevron_right</span></button>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <!-- Fleet Card 1 -->
+                    <div class="col-md-4">
+                        <div class="fleet-card">
+                            <div class="fleet-img-container">
+                                <img alt="Executive Minibus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTxQEjnNaBrtQ8ejRCF8GqzyvGecTTHcUHL1o2NB-TlxmYaO9iOWLYUvs0KcrctEKApXFCje5Z_8ioMMpFjTS6b2YT6mhW06SSlsJWXbBDqzcZj3yBf3xsacQ84cAIRb33qDMTUa3fhWG0xS4Vg6FDMibHmVI6JDmJCP6_zqGurTA032CXY1FYecLJreNk7e0U1tP0G7Py0u4FXJ80Z0KbuN6B2TOKxv5ywZTzMlcdMuHtgwBHZVe-lK-jGvYDhZWOtWtQiIYNKQ" />
+                            </div>
+                            <div class="p-4">
+                                <div class="d-flex justify-content-between mb-4">
+                                    <h4 class="font-headline-md mb-0 fs-5">Executive Minibus</h4>
+                                    <span class="font-label-caps text-muted">14-19 Seats</span>
+                                </div>
+                                <div class="d-flex gap-4 mb-4">
+                                    <div class="d-flex align-items-center gap-1"><span class="material-symbols-outlined fs-6">wifi</span><span class="font-label-caps" style="font-size: 10px;">WiFi</span></div>
+                                    <div class="d-flex align-items-center gap-1"><span class="material-symbols-outlined fs-6">electric_bolt</span><span class="font-label-caps" style="font-size: 10px;">Power</span></div>
+                                    <div class="d-flex align-items-center gap-1"><span class="material-symbols-outlined fs-6">inventory_2</span><span class="font-label-caps" style="font-size: 10px;">Luggage</span></div>
+                                </div>
+                                <button class="btn-details">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fleet Card 2 -->
+                    <div class="col-md-4">
+                        <div class="fleet-card">
+                            <div class="fleet-img-container">
+                                <img alt="Grand Touring Coach" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBE9lPGPfxOIv-CTgF30CYfNz8Za4cClyz6Nf3ZPhRVZwjpuQLxmQZIeUGZhqe6zxMtmO7DxTM68McqRoMeBYFROPfD8E3Ei6T8FKazG6c1wZpEcVJblFqkK1K-vAZFl5lsPKS4pG3pb8fWK13O1GtUQkpuGT25BV3zreF9UsLxXDWQrzLltDlr9_8xYFu1dDJ_D6DMFa142aC8XHYxPlLV7FWzCf3fIVX4zEd1emuaZA-69CucASZx_gWVoRf2N1Rut3tZUBQqQ" />
+                            </div>
+                            <div class="p-4">
+                                <div class="d-flex justify-content-between mb-4">
+                                    <h4 class="font-headline-md mb-0 fs-5">Grand Touring Coach</h4>
+                                    <span class="font-label-caps text-muted">45-56 Seats</span>
+                                </div>
+                                <div class="d-flex gap-4 mb-4">
+                                    <div class="d-flex align-items-center gap-1"><span class="material-symbols-outlined fs-6">wc</span><span class="font-label-caps" style="font-size: 10px;">Restroom</span></div>
+                                    <div class="d-flex align-items-center gap-1"><span class="material-symbols-outlined fs-6">coffee</span><span class="font-label-caps" style="font-size: 10px;">Galley</span></div>
+                                    <div class="d-flex align-items-center gap-1"><span class="material-symbols-outlined fs-6">settings_input_hdmi</span><span class="font-label-caps" style="font-size: 10px;">A/V Sys</span></div>
+                                </div>
+                                <button class="btn-details">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fleet Card 3 -->
+                    <div class="col-md-4">
+                        <div class="fleet-card">
+                            <div class="fleet-img-container">
+                                <img alt="Corporate Sprinter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpdsed4OSTkCyqU6dRO_rP43labya27UFYSBLpSkIIUvyAZq6HDkDfMgSIT3gVJl0RKSoj9OP7JuuDS45L41UkNqmWky6lQj7-0nkFCk3Tr47CM6ewSewuF3uul1P-kBPYSCJPG6ASzl_5U0z1OQyIfaWNxvJoxPZE3Z6ZB52HYNiGCMbaFPhfym43uZyjB7uRfByM3xWwyAub7kkf298HeGX8nJU7uh5g14y3ZONmk4m7eu-vGO8JCsUfbmMDa0ugwzriVHuGUQ" />
+                            </div>
+                            <div class="p-4">
+                                <div class="d-flex justify-content-between mb-4">
+                                    <h4 class="font-headline-md mb-0 fs-5">Corporate Sprinter</h4>
+                                    <span class="font-label-caps text-muted">8-12 Seats</span>
+                                </div>
+                                <div class="d-flex gap-4 mb-4">
+                                    <div class="d-flex align-items-center gap-1"><span class="material-symbols-outlined fs-6">table_restaurant</span><span class="font-label-caps" style="font-size: 10px;">Desk</span></div>
+                                    <div class="d-flex align-items-center gap-1"><span class="material-symbols-outlined fs-6">tv</span><span class="font-label-caps" style="font-size: 10px;">Media</span></div>
+                                    <div class="d-flex align-items-center gap-1"><span class="material-symbols-outlined fs-6">chair</span><span class="font-label-caps" style="font-size: 10px;">Swivel</span></div>
+                                </div>
+                                <button class="btn-details">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6">
+                        <div class="position-relative">
+                            <div class="newsletter-accent"></div>
+                            <img alt="Luxury Experience" class="newsletter-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSZJa0Z1TaiJktlenoDCmEV0-4eRiVx6a-WqsfVDo_SgyxCR6XAhbBp9vHuAHLPdBZXHb8Xf51KHYQqfg88SjEqHcjyJGW7nAjPua1APWbcxCPTdM-NLxd5HCUZd6ot6UL0rRHj_MpGK_1y39HvIrxQIbiOfigXTFp9DYnPTzk0KoCbgTYk95JkuSzxckfkx1qVWaxB7JbCPAQF8CHC9Dssvk35nSdMouCfGXx_eRIVQC27b7l58D6VM7R0-c0L6OgbEstLckxw" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 ps-lg-5">
+                        <h2 class="font-headline-xl mb-4">Elevate Every Miles of Your Journey.</h2>
+                        <p class="text-muted font-body-lg mb-5">Subscribe to our newsletter for exclusive corporate packages and luxury travel insights curated for the discerning operator.</p>
+                        <form>
+                            <input class="email-input mb-4" placeholder="Corporate Email Address" type="email" />
+                            <div class="d-flex">
+                                <button class="btn btn-join font-label-caps" type="button">Join LuxBus Circle</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container text-center">
+            <div class="row align-items-center">
+                <div class="col-lg-3 text-lg-start mb-4 mb-lg-0">
+                    <span class="footer-logo">LUXBUS</span>
+                </div>
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="d-flex flex-wrap justify-content-center">
+                        <a class="footer-link" href="#">Fleet</a>
+                        <a class="footer-link" href="#">Privacy Policy</a>
+                        <a class="footer-link" href="#">Terms of Service</a>
+                        <a class="footer-link" href="#">Contact Us</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-lg-end">
+                    <span class="copyright">© 2024 LuxBus. All rights reserved.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
