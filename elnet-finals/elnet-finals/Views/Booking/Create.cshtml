@@ -3,6 +3,28 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+@model Booking
+
+<div class="container mt-4">
+    <h2>Trip Details</h2>
+
+    <form method="post">
+        <div class="row">
+            <div class="col-md-6">
+                <input class="form-control mb-2" asp-for="PickupLocation" placeholder="Pickup Location" />
+                <input class="form-control mb-2" asp-for="Destination" placeholder="Destination" />
+                <input class="form-control mb-2" asp-for="TripDate" type="date" />
+            </div>
+
+            <div class="col-md-6">
+                <input class="form-control mb-2" asp-for="FirstName" placeholder="First Name" />
+                <input class="form-control mb-2" asp-for="LastName" placeholder="Last Name" />
+                <input class="form-control mb-2" asp-for="Email" placeholder="Email" />
+            </div>
+        </div>
+
+        <button class="btn btn-dark mt-3">Continue</button>
+    </form>
+</div>
 
 
