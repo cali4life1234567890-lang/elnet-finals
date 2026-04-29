@@ -3,5 +3,19 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+@model Vehicle
+
+<div class="container mt-4">
+    <h2>@Model.Name</h2>
+
+    <img src="@Model.ImageUrl" class="img-fluid mb-3" />
+
+    <p>@Model.Description</p>
+    <p><strong>Capacity:</strong> @Model.Capacity</p>
+    <p><strong>Price:</strong> $@Model.PricePerHour</p>
+
+    <a href="/Booking/Create?vehicleId=@Model.Id" class="btn btn-warning">
+        Book Now
+    </a>
+</div>
 
