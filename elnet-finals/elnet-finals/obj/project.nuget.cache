@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9yY2Je3zfNY=",
+  "dgSpecHash": "CEZb4uaKmlI=",
   "success": true,
   "projectFilePath": "C:\\Users\\cali4\\Desktop\\FINALS\\elnet-finals\\elnet-finals\\elnet-finals.csproj",
   "expectedPackageFiles": [
@@ -82,6 +82,7 @@
     "C:\\Users\\cali4\\.nuget\\packages\\microsoft.entityframeworkcore.design\\10.0.7\\microsoft.entityframeworkcore.design.10.0.7.nupkg.sha512",
     "C:\\Users\\cali4\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\10.0.7\\microsoft.entityframeworkcore.relational.10.0.7.nupkg.sha512",
     "C:\\Users\\cali4\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\10.0.7\\microsoft.entityframeworkcore.sqlserver.10.0.7.nupkg.sha512",
+    "C:\\Users\\cali4\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\10.0.7\\microsoft.entityframeworkcore.tools.10.0.7.nupkg.sha512",
     "C:\\Users\\cali4\\.nuget\\packages\\microsoft.extensions.dependencymodel\\10.0.7\\microsoft.extensions.dependencymodel.10.0.7.nupkg.sha512",
     "C:\\Users\\cali4\\.nuget\\packages\\microsoft.identity.client\\4.73.1\\microsoft.identity.client.4.73.1.nupkg.sha512",
     "C:\\Users\\cali4\\.nuget\\packages\\microsoft.identity.client.extensions.msal\\4.73.1\\microsoft.identity.client.extensions.msal.4.73.1.nupkg.sha512",
