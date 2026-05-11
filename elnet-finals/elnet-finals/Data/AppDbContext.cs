@@ -1,7 +1,6 @@
 ﻿namespace elnet_finals.Data
 {
     using elnet_finals.Models;
-    using LuxBus.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
