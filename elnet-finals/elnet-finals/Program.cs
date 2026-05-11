@@ -4,8 +4,9 @@ using elnet_finals.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 //Register the Database Service
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container (This is needed for MVC to work)
 builder.Services.AddControllersWithViews();
