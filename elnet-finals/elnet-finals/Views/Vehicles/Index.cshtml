@@ -1,0 +1,31 @@
+﻿@model IEnumerable<elnet_finals.Models.Vehicle>
+
+<div class="container mt-4">
+    <h2 class="text-primary mb-4">Available Vehicles</h2>
+    
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Capacity</th>
+                <th>Price / Hour</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Type</td>
+                    <td>@item.Capacity</td>
+                    <td>@item.PricePerHour.ToString("C")</td>
+                    <td>
+                        <a class="btn btn-sm btn-info">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
