@@ -1,0 +1,47 @@
+﻿@model List<Vehicle>
+
+<h2>Available Fleet</h2>
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+
+            <div class="card mb-4">
+
+                <img src="@item.ImageUrl"
+                     class="card-img-top" />
+
+                <div class="card-body">
+
+                    <h4>@item.Name</h4>
+
+                    <p>@item.Description</p>
+
+                    <p>
+                        Capacity:
+                        @item.Capacity
+                    </p>
+
+                    <p>
+                        $@item.PricePerHour/hour
+                    </p>
+
+                    <a asp-controller="Fleet"
+                           asp-action="Details"
+                           asp-route-id="@item.Id"
+                           class="btn btn-dark">
+
+                        View Details
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    }
+
+</div>
