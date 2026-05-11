@@ -1,0 +1,43 @@
+﻿@model Booking
+
+<h2>Book Vehicle</h2>
+
+<form asp-action="Create" method="post">
+
+    <input type="hidden"
+           asp-for="VehicleId"
+           value="@ViewBag.VehicleId" />
+
+    <div class="mb-3">
+
+        <label asp-for="PickupLocation"></label>
+
+        <input asp-for="PickupLocation"
+               class="form-control" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label asp-for="Destination"></label>
+
+        <input asp-for="Destination"
+               class="form-control" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label asp-for="TripDate"></label>
+
+        <input asp-for="TripDate"
+               type="date"
+               class="form-control" />
+
+    </div>
+
+    <button class="btn btn-dark">
+        Confirm Booking
+    </button>
+
+</form>
