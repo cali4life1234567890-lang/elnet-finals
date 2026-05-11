@@ -1,10 +1,8 @@
-﻿namespace elnet_finals.Models
-{
-    using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 
+namespace elnet_finals.Models
+{
     public class ApplicationUser : IdentityUser
     {
-        public string FullName { get; set; }
     }
-
 }
