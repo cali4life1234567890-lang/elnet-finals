@@ -770,3 +770,4 @@ C:\Users\cali4\Desktop\FINALS\elnet-finals\elnet-finals\obj\Debug\net10.0\refint
 C:\Users\cali4\Desktop\FINALS\elnet-finals\elnet-finals\obj\Debug\net10.0\elnet-finals.pdb
 C:\Users\cali4\Desktop\FINALS\elnet-finals\elnet-finals\obj\Debug\net10.0\elnet-finals.genruntimeconfig.cache
 C:\Users\cali4\Desktop\FINALS\elnet-finals\elnet-finals\obj\Debug\net10.0\ref\elnet-finals.dll
+C:\Users\cali4\Desktop\FINALS\elnet-finals\elnet-finals\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

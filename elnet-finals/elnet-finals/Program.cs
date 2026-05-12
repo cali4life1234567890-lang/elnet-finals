@@ -1,5 +1,6 @@
 using elnet_finals.Data;
 using elnet_finals.Models;
+using elnet_finals.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddRazorPages();
+
+builder.Services.AddScoped<IAvailabilityService, AvailabilityService>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
