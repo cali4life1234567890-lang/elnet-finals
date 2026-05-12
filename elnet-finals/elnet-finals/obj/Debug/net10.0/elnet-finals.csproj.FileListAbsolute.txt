@@ -764,7 +764,6 @@ C:\Users\cali4\Desktop\FINALS\elnet-finals\elnet-finals\obj\Debug\net10.0\static
 C:\Users\cali4\Desktop\FINALS\elnet-finals\elnet-finals\obj\Debug\net10.0\staticwebassets.development.json
 C:\Users\cali4\Desktop\FINALS\elnet-finals\elnet-finals\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 C:\Users\cali4\Desktop\FINALS\elnet-finals\elnet-finals\obj\Debug\net10.0\swae.build.ex.cache
-C:\Users\cali4\Desktop\FINALS\elnet-finals\elnet-finals\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\Users\cali4\Desktop\FINALS\elnet-finals\elnet-finals\obj\Debug\net10.0\elnet-fi.2A67015D.Up2Date
 C:\Users\cali4\Desktop\FINALS\elnet-finals\elnet-finals\obj\Debug\net10.0\elnet-finals.dll
 C:\Users\cali4\Desktop\FINALS\elnet-finals\elnet-finals\obj\Debug\net10.0\refint\elnet-finals.dll

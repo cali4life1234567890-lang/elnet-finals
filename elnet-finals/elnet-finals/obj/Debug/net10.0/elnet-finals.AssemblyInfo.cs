@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("elnet-finals")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e3c04f891d15c238955f8ebdec7d5378751e8e39")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ad629fe1b91cf2f0e52f9cf348a451b3216baed4")]
 [assembly: System.Reflection.AssemblyProductAttribute("elnet-finals")]
 [assembly: System.Reflection.AssemblyTitleAttribute("elnet-finals")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

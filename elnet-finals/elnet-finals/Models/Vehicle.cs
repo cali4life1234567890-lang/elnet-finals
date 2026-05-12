@@ -1,4 +1,6 @@
-﻿namespace elnet_finals.Models
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace elnet_finals.Models
 {
     public class Vehicle
     {
@@ -10,6 +12,7 @@
 
         public int Capacity { get; set; }
 
+        [Column(TypeName = "decimal(18,2)")]
         public decimal PricePerHour { get; set; }
 
         public string ImageUrl { get; set; }
