@@ -1,0 +1,31 @@
+@model elnet_finals.Models.ViewModels.BookingStep1ViewModel
+
+@{
+    ViewData["Title"] = "Confirm Booking for " + Model.VehicleName;
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Confirm Booking Details</h2>
+    <form asp-action="Confirm" method="post" class="needs-validation" novalidate>
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="VehicleId" />
+        <div class="mb-3">
+            <label class="form-label">Vehicle</label>
+            <input class="form-control" value="@Model.VehicleName" readonly />
+        </div>
+        <div class="mb-3">
+            <label asp-for="StartDate" class="form-label"></label>
+            <input asp-for="StartDate" class="form-control" type="date" readonly />
+        </div>
+        <div class="mb-3">
+            <label asp-for="EndDate" class="form-label"></label>
+            <input asp-for="EndDate" class="form-control" type="date" readonly />
+        </div>
+        <button type="submit" class="btn btn-success">Confirm Booking</button>
+        <a asp-controller="Booking" asp-action="Step1" asp-route-vehicleId="@Model.VehicleId" class="btn btn-secondary ms-2">Back</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

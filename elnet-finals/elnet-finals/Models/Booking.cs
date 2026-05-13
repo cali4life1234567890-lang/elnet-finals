@@ -23,6 +23,7 @@ namespace elnet_finals.Models
 
         // Foreign keys
         public int BusId { get; set; }
+        public string UserId { get; set; } = string.Empty;
         // Compatibility with existing view
         public int VehicleId { get; set; }
         public string PickupLocation { get; set; } = string.Empty;
