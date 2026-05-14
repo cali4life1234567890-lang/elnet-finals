@@ -23,13 +23,7 @@ public class BookingController : Controller
         _availabilityService = availabilityService;
     }
 
-    // GET: /Booking/Confirm (optional placeholder)
-    [HttpGet]
-    public IActionResult Confirm()
-    {
-        // This view can be used for manual navigation; normally the POST handles submission.
-        return View();
-    }
+
 
     // GET: /Booking/Step1
     [HttpGet]
@@ -76,14 +70,36 @@ public class BookingController : Controller
     }
 
 
-    // POST action to finalize booking after Step1
+    // POST: Show additional details form after step1
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Confirm(BookingStep1ViewModel model)
+    public IActionResult Details(BookingStep1ViewModel model)
     {
         if (!ModelState.IsValid)
         {
             return View("Step1", model);
+        }
+        // Map step1 data to the detailed view model
+        var detailsModel = new BookingDetailsViewModel
+        {
+            VehicleId = model.VehicleId,
+            VehicleName = model.VehicleName,
+            StartDate = model.StartDate,
+            EndDate = model.EndDate,
+            // Additional fields left for user input
+        };
+        return View("Details", detailsModel);
+    }
+
+    // POST action to finalize booking after collecting details
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Confirm(BookingDetailsViewModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            // Return to details view if validation fails
+            return View("Details", model);
         }
 
         // Check availability
@@ -91,13 +107,12 @@ public class BookingController : Controller
         if (!isAvailable)
         {
             ModelState.AddModelError(string.Empty, "Selected vehicle is not available for the chosen dates.");
-            return View("Step1", model);
+            return View("Details", model);
         }
 
         var vehicle = await _context.Vehicles.FindAsync(model.VehicleId);
         if (vehicle == null) return NotFound();
 
-        // Compute total price (price per hour * total hours)
         var totalHours = (model.EndDate - model.StartDate).TotalHours;
         var totalPrice = vehicle.PricePerHour * (decimal)totalHours;
 
@@ -111,7 +126,11 @@ public class BookingController : Controller
             EndDate = model.EndDate,
             TotalPrice = totalPrice,
             Status = BookingStatus.Pending,
-            // Extras default to false; user can edit later if needed
+            PickupLocation = model.PickupLocation,
+            Destination = model.Destination,
+            WiFi = model.WiFi,
+            Insurance = model.Insurance,
+            ExtraLuggage = model.ExtraLuggage
         };
 
         _context.Bookings.Add(booking);
@@ -128,6 +147,24 @@ public class BookingController : Controller
             .Where(b => b.UserId == userId)
             .ToListAsync();
         return View(bookings);
+    }
+
+    // POST: /Booking/Cancel
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Cancel(int id)
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
+        var booking = await _context.Bookings.FirstOrDefaultAsync(b => b.Id == id && b.UserId == userId);
+        if (booking == null)
+        {
+            return NotFound();
+        }
+
+        // Set status to Cancelled rather than deleting row
+        booking.Status = BookingStatus.Cancelled;
+        await _context.SaveChangesAsync();
+        return RedirectToAction(nameof(MyBookings));
     }
 
 }

@@ -1,3 +1,4 @@
+@using elnet_finals.Models
 @model IEnumerable<elnet_finals.Models.Booking>
 
 @{
@@ -32,7 +33,16 @@ else
                 <td>@b.StartDate.ToShortDateString()</td>
                 <td>@b.EndDate.ToShortDateString()</td>
                 <td>$@b.TotalPrice</td>
-                <td>@b.Status</td>
+            <td>
+                @b.Status
+                @if (b.Status != BookingStatus.Cancelled) {
+                    <form asp-action="Cancel" method="post" class="d-inline">
+                        <input type="hidden" name="id" value="@b.Id" />
+                        <button type="submit" class="btn btn-sm btn-danger">Cancel</button>
+                        @Html.AntiForgeryToken()
+                    </form>
+                }
+            </td>
             </tr>
         }
         </tbody>
